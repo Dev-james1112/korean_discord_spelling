@@ -5,7 +5,7 @@ from hanspell.constants import CheckResult
 from discord.ext import commands
 bot = commands.Bot(command_prefix='!')
 
-token = 'OTIzMTYzOTIyNTcwMzAxNDkx.YcMBZg.4QZuYmwuC0uWi12Y2IcvZ3Cb8Oc'
+token = '' #token 입력
 
 @bot.event
 async def on_ready():
