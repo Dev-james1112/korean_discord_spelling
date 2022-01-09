@@ -2,3 +2,4 @@ discord.py
 discord
 asyncio
 py-hanspell
+req
