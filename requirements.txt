@@ -1,5 +1,5 @@
 discord.py
 discord
 asyncio
-req
+get-pip.py
 py-hanspell
