@@ -3,10 +3,14 @@ import asyncio
 from hanspell import spell_checker
 from hanspell.constants import CheckResult
 from discord.ext import commands
+from pip.req import parse_requirements
 bot = commands.Bot(command_prefix='!')
 
 token = 'OTIzMTYzOTIyNTcwMzAxNDkx.YcMBZg.Ueiwr2gob83X_WFzK__v0-6YozE'
-
+try: # for pip >= 10
+    from pip._internal.req import parse_requirements
+except ImportError: # for pip <= 9.0.3
+    from pip.req import parse_requirements
 @bot.event
 async def on_ready():
     print(bot.user.name)
