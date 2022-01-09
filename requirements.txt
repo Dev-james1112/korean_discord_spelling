@@ -1,4 +1,4 @@
 discord.py
 discord
 asyncio
-hanspell
+py-hanspell
