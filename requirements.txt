@@ -1,5 +1,0 @@
-discord.py
-discord
-asyncio
-req
-py-hanspell
