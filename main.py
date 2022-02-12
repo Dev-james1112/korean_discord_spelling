@@ -7,7 +7,10 @@ import json
 
 bot = commands.Bot(command_prefix='!')
 
-token = 'OTIzMTYzOTIyNTcwMzAxNDkx.YcMBZg.K9MhEqRVGiJoaTZU96s_NwZeV80'
+with open('token.json', 'r') as f:
+    tokens = json.load(f)
+
+token = tokens['token']
 
 @bot.event
 async def on_ready():
