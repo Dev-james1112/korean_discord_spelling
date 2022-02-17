@@ -57,13 +57,29 @@ async def on_message(message):
         embed = discord.Embed(title='Made by james1112#9248') # Embed의 기본 틀(색상, 메인 제목, 설명)을 잡아줍니다 
         embed.set_footer(text=f"{message.author.name}" ,icon_url = message.author.avatar_url)
         embed.set_thumbnail(url="https://cdn.discordapp.com/avatars/690152774478069787/5386334eea41bbf178a099e7c1342237.png")
-        embed.add_field(name='!맞춤법 알림 <on/off> [채널]', value=f'맞춤법 기능을 키거나 끕니다.', inline=True)
+        embed.add_field(name='!맞춤법 알림', value=f'맞춤법 기능을 키거나 끕니다. (토글)', inline=True)
         embed.add_field(name='!제외어 <추가/제거> <단어>', value=f'맞춤법 검사에서 제외할 단어를 지정합니다.', inline=True)
         await message.channel.send(embed=embed)
     elif sent == "!맞춤법 알림" or sent == "!맞춤법검사 알림":
-        embed = discord.Embed(title="맞춤법 알림", description=f"현재 맞춤법 알림이 {'켜져있습니다.' if server.get(str(message.channel.guild.id)).get('grammar') == 'True' else '꺼져있습니다.'}\n `!맞춤법 알림 <on/off>`을 사용하여 맞춤법 기능을 키거나 끌수있습니다.") # Embed의 기본 틀(색상, 메인 제목, 설명)을 잡아줍니다 
-        embed.set_footer(text=f"{message.author.name}" ,icon_url = message.author.avatar_url)
-        await message.channel.send(embed=embed)
+        #if message.author.guild_permissions.administrator or message.author.id == 690152774478069787:
+            if server.get(str(message.channel.guild.id)).get("grammar") == 'True':
+                server[str(message.channel.guild.id)]['grammar'] = 'False'
+                with open("server.json", "w") as json_file:
+                    json.dump(server, json_file, indent=4, ensure_ascii=False)
+                with open('server.json', 'r') as g:
+                    server = json.load(g)
+                await message.channel.send('맞춤법 검사가 꺼졌습니다. 다시 키시려면 `!맞춤법 알림 on`를 입력하세요.')
+            elif server.get(str(message.channel.guild.id)).get("grammar") == 'False':
+                server[str(message.channel.guild.id)]['grammar'] = 'True'
+                with open("server.json", "w") as json_file:
+                    json.dump(server, json_file, indent=4, ensure_ascii=False)
+                with open('server.json', 'r') as g:
+                    server = json.load(g)
+                await message.channel.send('맞춤법 검사가 켜졌습니다. 끄시려면 `!맞춤법 알림 off`를 입력하세요.')
+        #else:
+        #    embed = discord.Embed(title='오류', description=f"이 명령어를 사용하려면 관리자 권한이 필요합니다.")
+        #    embed.set_footer(text=f"{message.author.name}" ,icon_url = message.author.avatar_url)
+        #    await message.channel.send(embed=embed)
     elif sent == "!맞춤법 알림 끄기" or sent == "!맞춤법 알림 off" or sent == "!맞춤법검사 알림 끄기" or sent == "!맞춤법검사 알림 off":
         #if message.author.guild_permissions.administrator or message.author.id == 690152774478069787:
             server[str(message.channel.guild.id)]['grammar'] = 'False'
