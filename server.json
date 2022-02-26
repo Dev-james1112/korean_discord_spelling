@@ -3,14 +3,42 @@
         "grammar": "True",
         "except": [
             "외안되"
-        ]
+        ],
+        "permission": "1"
     },
     "778118783234605077": {
         "grammar": "True",
         "except": []
     },
     "653083797763522580": {
-        "grammar": "False",
+        "grammar": "True",
+        "except": [],
+        "permission": "3"
+    },
+    "836826102277996544": {
+        "grammar": "True",
         "except": []
+    },
+    "936044540471672922": {
+        "grammar": "True",
+        "except": []
+    },
+    "867703336974549033": {
+        "grammar": "True",
+        "except": []
+    },
+    "861222296639635516": {
+        "grammar": "True",
+        "except": []
+    },
+    "943545704440279080": {
+        "grammar": "True",
+        "except": [],
+        "permission": "3"
+    },
+    "916969268887830528": {
+        "grammar": "True",
+        "except": [],
+        "permission": "3"
     }
 }
